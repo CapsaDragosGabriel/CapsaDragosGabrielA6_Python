@@ -15,3 +15,5 @@ def main():
     moves = [1, -3, 4, 2]
     start = 2
     print(compose(notes, moves, start))
+
+main()
