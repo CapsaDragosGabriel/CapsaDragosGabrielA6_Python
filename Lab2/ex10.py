@@ -22,15 +22,20 @@ def normalizeLists(lists):
             else:
                 lists[k].append(None)
 
+def sol2(lists):
+    z=list(zip(*lists))
+    print(z)
+    return z
 def main():
     lists = [
         [1, 2, 3,4],
         [5, 6, 7],
         ["a", "b", "c","d"]
     ]
-    #normalizeLists(lists)
+    normalizeLists(lists)
+    sol2(lists)
    # print(lists)
-    print(getFromList(lists))
+   # print(sol2(lists))
 
 
 main()

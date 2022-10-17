@@ -1,11 +1,10 @@
 import copy
 def changeMatrix(a):
     rows = len(a)
-    cols = len(a[0])
     copyMatrix=copy.deepcopy(a)
 
     for i in range(0, rows):
-        for j in range(0, cols):
+        for j in range(0, i):
             if i > j:
                 copyMatrix[i][j] = 0
     return copyMatrix
