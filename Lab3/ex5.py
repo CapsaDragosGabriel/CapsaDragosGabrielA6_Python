@@ -44,7 +44,7 @@ def checkExpression(a, prefix, middle, suffix):
 
 def main():
     s = {("key1", "", "inside", ""), ("key2", "start", "middle", "winter")}
-    d = {"key1": "come inside, it's too cold out","key3": "this is not valid" }
+    d = {"key1": "come inside, it's too cold out","key2": "start this middleis not validwinter" }
     #print(checkExpression("come inside, it's too cold out", "", "inside", ""))
     # print(d.__contains__("key1"))
     print(validate_dict(s, d))

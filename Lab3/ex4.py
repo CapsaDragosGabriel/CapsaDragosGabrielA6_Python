@@ -6,7 +6,7 @@
 def build_xml_element2(tag, content, **kwargs):
     string = "<" + tag+" "
     for element in kwargs:
-        string = string + str(element) + "=\"" + str(kwargs[element]+"\"")
+        string = string + element + "=\"" + kwargs[element]+"\""
     string= string+ ">"+content+ "</" + tag + ">"
     return string
 

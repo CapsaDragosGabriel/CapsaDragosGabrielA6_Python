@@ -5,7 +5,6 @@ def changeMatrix(a):
 
     for i in range(0, rows):
         for j in range(0, i):
-            if i > j:
                 copyMatrix[i][j] = 0
     return copyMatrix
 

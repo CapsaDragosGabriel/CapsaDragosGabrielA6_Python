@@ -1,8 +1,6 @@
 def checkPalindrome(f):
     s = str(f)
-
     l = len(s)
-
     ok = 1
     for i in range(l):
         if s[i] != s[l - 1 - i]:

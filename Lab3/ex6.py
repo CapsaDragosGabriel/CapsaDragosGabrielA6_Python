@@ -1,7 +1,7 @@
 def getElements(multime):
     all = set(multime)
-    uniques = set({})
-    toremove = set({})
+    uniques = set()
+    toremove = set()
     for element in multime:
         if uniques.__contains__(element):
             toremove.add(element)
