@@ -12,22 +12,21 @@ def cautare(target, to_search):
                 full_fileName = os.path.join(root, fileName)
                 full_fileName = full_fileName[1:]
                 try:
-                    x = [line for line in open(target+full_fileName)]
-                    #print(x)
+                    x = [line for line in open(target + full_fileName)]
+                    # print(x)
                     ok = False
                     for element in x:
                         if element.__contains__(to_search) and not ok:
                             ok = True
                     if ok:
-                        listFound.append(target+full_fileName)
-                except:
-                    ok=False
+                        listFound.append(target + full_fileName)
+                except :
+                    pass
             for directory in directories:
                 full_fileName = os.path.join(root, directory)
                 full_fileName = full_fileName[1:]
-                print(target+full_fileName)
-                listFound.append(cautare(target+full_fileName,to_search))
-
+                print(target + full_fileName)
+                listFound.append(cautare(target + full_fileName, to_search))
 
             return listFound
 
@@ -47,6 +46,8 @@ def cautare(target, to_search):
 
 def main():
     target = "E:\\AN3\\Sem1\\A3D\\Alarak\\test"
+    #target = "E:\\AN3\\Sem1\\A3D\\New Text Document - Copy.txt"
+
     to_search = "a"
     print(cautare(target, to_search))
 

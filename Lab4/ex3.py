@@ -26,11 +26,13 @@ def functie(my_path):
         string = ""
         for element in x:
             string += element
+        file.close()
         return string[-20:]
 
 
 def main():
-    my_path = "Alarak"
+    #my_path = "Alarak"
+    my_path = "AbsolutCool.txt"
     os.chdir("E:\AN3\Sem1\A3D")
     print(functie(my_path))
 

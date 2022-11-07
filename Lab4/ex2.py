@@ -7,11 +7,11 @@ def printFolders(director, fisier):
     lista=os.listdir(".")
 
     for element in lista:
-        if os.path.isdir(element):
+        if os.path.isfile(element):
             if element[0]=='A':
-                file.write(element)
+                file.write(os.path.abspath(element))
                 file.write("\n")
-
+    file.close()
 
 def main():
     director = "E:\AN3\Sem1\A3D"
