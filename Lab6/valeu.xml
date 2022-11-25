@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SiteData>
+	<site id="321312" class="url" name= "url-form" data-id= "item">
+		<class>url</class>
+		<name>url-form</name>
+		<data-id> item</data-id>
+	</site>
+	<site id="420">
+		<class>nu</class>
+		<name>avem</name>
+		<data-id> site</data-id>
+	</site>
+	<site id="112">
+		<name>avem</name>
+		<data-id> site</data-id>
+	</site>
+</SiteData>

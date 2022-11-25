@@ -1,16 +1,3 @@
-def print_arguments2(function):
-    # print("Arguments are: ",function.__name__)
-    # print(function.__code__.co_varnames[0])
-    def new_function(*args, **kwargs):
-        print("Arguments are: ", args, kwargs)
-
-    return new_function
-
-
-def return5():
-    return 5
-
-
 def addArguments(function, *args, **kwargs):
     print("Arguments are: ", args, kwargs)  # spun care-s parametrii
     return function(*args, **kwargs)  # apelez functia cu parametrii respectivi
@@ -30,6 +17,7 @@ def augment_function(function, decorators):
         # wrapping de genul multiplyoutput(print_arguments(functie,*args,**kwargs))
 
     return lambda *args, **argvs: function(*args, **argvs)
+
 
 
 if __name__ == '__main__':
