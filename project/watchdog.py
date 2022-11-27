@@ -159,5 +159,5 @@ if __name__ == '__main__':
         else:
             # logStatus(processName, status=checkIfProcessRunning(processName))
             log_status_simple(processName, status=checkIfProcessRunning(processName))
-            print("e pornit varu")
+            print("e pornit")
         time.sleep(int(sys.argv[2]))
