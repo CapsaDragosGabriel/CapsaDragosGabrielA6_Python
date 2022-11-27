@@ -18,10 +18,8 @@ def checkIfProcessRunning(processName):
     """
     verifica daca am un proces running cu numele specificat
     """
-    # Iterate over the all the running process
     for proc in psutil.process_iter():
         try:
-            # Check if process name contains the given name string.
             if processName.lower() in proc.name().lower() and len(processName) == len(proc.name()):
                 return True
         except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
