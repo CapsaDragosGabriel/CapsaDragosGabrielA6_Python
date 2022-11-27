@@ -15,9 +15,9 @@ def getTime():
 
 
 def checkIfProcessRunning(processName):
-    '''
-    Check if there is any running process that contains the given name processName.
-    '''
+    """
+    verifica daca am un proces running cu numele specificat
+    """
     # Iterate over the all the running process
     for proc in psutil.process_iter():
         try:
@@ -29,22 +29,27 @@ def checkIfProcessRunning(processName):
     return False
 
 
-
-
 def logHeader(printHeader):
+    """
+    pune un header  de forma
+    Date+Time | Process Name | Status
+    ---------------------------------
+    """
     logging.basicConfig(filename=sys.argv[3],
                         format='%(datetime)s%(spaces)s| %(proc)s%(procspaces)s | %(status)s',
                         filemode="a")
     if printHeader:
         logger = logging.getLogger()
         logger.setLevel(logging.INFO)
-        d = {'datetime': 'Date+Time','spaces':' '*(len(time.asctime()) - 8), 'proc': 'Process Name','procspaces':' '*15,'status': 'Status'}
+        d = {'datetime': 'Date+Time', 'spaces': ' ' * (len(time.asctime()) - 8), 'proc': 'Process_Name',
+             'procspaces': ' ' * 15, 'status': 'Status'}
         try:
             logger.info('', extra=d)
         except Exception as e:
             raise Exception("logger header exception")
 
-        d={'datetime':'-'*len("Date+Time"),'spaces':'-'*(len(time.asctime())-8),'proc':'-'*len("Process Name"),'procspaces':"-"*15,'status':'------'}
+        d = {'datetime': '-' * len("Date+Time"), 'spaces': '-' * (len(time.asctime()) - 8),
+             'proc': '-' * len("Process Name"), 'procspaces': "-" * 15, 'status': '------'}
         try:
             logger.info('', extra=d)
         except Exception as e:
@@ -52,27 +57,36 @@ def logHeader(printHeader):
 
 
 def log_header_simple(printHeader):
+    """
+        pune un header  de forma
+        Date+Time  Process Name  Status
+    """
     logging.basicConfig(filename=sys.argv[3],
-                   format='[%(asctime)s] %(proc)s %(status)s',
-                   filemode="a")
+                        format='[%(asctime)s] %(proc)s %(status)s',
+                        filemode="a")
     if printHeader:
         logger = logging.getLogger()
         logger.setLevel(logging.INFO)
-        d = {'datetime': 'Date+Time', 'proc': 'Process Name','status': 'Status'}
+        d = {'datetime': 'Date+Time', 'proc': 'Process_Name', 'status': 'Status'}
         try:
             logger.info('', extra=d)
         except Exception as e:
             raise Exception("logger header exception")
 
 
-def log_status_simple(name, file, status):
+def log_status_simple(name, status):
+    """
+    pune linii de tipul:
+    Date+Time ProcessName Status
+    """
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
     if status:
-        status="Alive"
+        status = "Alive"
     else:
-        status="Dead"
-    d = {'datetime': time.asctime(),'spaces':' ', 'proc': name,'procspaces':' '*(15+len("Process_Name")-len(name)), 'status':status}
+        status = "Dead"
+    d = {'datetime': time.asctime(), 'spaces': ' ', 'proc': name,
+         'procspaces': ' ' * (15 + len("Process_Name") - len(name)), 'status': status}
     try:
         if status:
             logger.info("", extra=d)
@@ -83,13 +97,18 @@ def log_status_simple(name, file, status):
 
 
 def logStatus(name, file, status):
+    """
+        pune linii de tipul:
+        Date+Time |  ProcessName |  Status
+    """
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
     if status:
-        status="Alive"
+        status = "Alive"
     else:
-        status="Dead"
-    d = {'datetime': time.asctime(),'spaces':' ', 'proc': name,'procspaces':' '*(15+len("Process_Name")-len(name)), 'status':status}
+        status = "Dead"
+    d = {'datetime': time.asctime(), 'spaces': ' ', 'proc': name,
+         'procspaces': ' ' * (15 + len("Process_Name") - len(name)), 'status': status}
     try:
         if status:
             logger.info("", extra=d)
@@ -118,15 +137,14 @@ def getName(path):
 if __name__ == '__main__':
     file_exists = True
     if not os.path.isfile(sys.argv[3]):
-        file_exists=False
-
+        file_exists = False
 
     print(sys.argv[1])
     path = sys.argv[1]
 
     processName = getName(path)
 
-    #logHeader(not file_exists)
+    # logHeader(not file_exists)
     log_header_simple(not file_exists)
 
     print(processName)
@@ -134,13 +152,12 @@ if __name__ == '__main__':
     while True:
         if not checkIfProcessRunning(processName):
             print("nu-i pornit")
-            #logStatus(processName, sys.argv[3], status=checkIfProcessRunning(processName))
-            log_status_simple(processName, sys.argv[3], status=checkIfProcessRunning(processName))
+            # logStatus(processName, status=checkIfProcessRunning(processName))
+            log_status_simple(processName, status=checkIfProcessRunning(processName))
             r = random.randint(1, 10)
             os.startfile(sys.argv[1])
         else:
-            #logStatus(processName, sys.argv[3], status=checkIfProcessRunning(processName))
-            log_status_simple(processName, sys.argv[3], status=checkIfProcessRunning(processName))
+            # logStatus(processName, status=checkIfProcessRunning(processName))
+            log_status_simple(processName, status=checkIfProcessRunning(processName))
             print("e pornit varu")
         time.sleep(int(sys.argv[2]))
-
